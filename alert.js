@@ -10,7 +10,10 @@ const TG_CHAT_ID = process.env.TG_CHAT_ID;
 async function getFearGreedIndex() {
   const url = "https://pro-api.coinmarketcap.com/v3/fear-and-greed/latest";
   const res = await axios.get(url, {
-    headers: { "X-CMC_PRO_API_KEY": CMC_API_KEY }
+    headers: { 
+         Accepts: "application/json",
+         "X-CMC_PRO_API_KEY": CMC_API_KEY
+        }
   });
   return res.data?.data;
 }
@@ -28,7 +31,7 @@ export async function runAlert() {
 
     console.log("Fear & Greed:", value, status);
 
-    if (value < 20) {
+    if (value < 30) {
       await sendTelegram(`⚠️ Cảnh báo: Fear & Greed Index = ${value} (${status})`);
     } else if (value > 80) {
       await sendTelegram(`🚀 Thị trường quá tham lam! Index = ${value} (${status})`);

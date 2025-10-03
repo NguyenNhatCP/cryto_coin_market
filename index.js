@@ -2,7 +2,7 @@ import cron from "node-cron";
 import { runAlert } from "./alert.js";
 
 // Chạy mỗi 5 phút
-cron.schedule("*/2 * * * *", () => {
+cron.schedule("*/10 * * * *", () => {
   console.log("⏰ Running crypto alert job...");
   runAlert();
 });
