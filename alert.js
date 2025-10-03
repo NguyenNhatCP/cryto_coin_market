@@ -27,7 +27,7 @@ export async function runAlert() {
   try {
     const data = await getFearGreedIndex();
     const value = data?.value;
-    const status = data?.value_text;
+    //const status = data?.value_text;
 
     console.log("Fear & Greed:", value, status);
 
@@ -35,9 +35,10 @@ export async function runAlert() {
       await sendTelegram(`⚠️ Cảnh báo: Fear & Greed Index = ${value} (${status})`);
     } else if (value > 80) {
       await sendTelegram(`🚀 Thị trường quá tham lam! Index = ${value} (${status})`);
-    } else {
-      await sendTelegram(`ℹ️ Fear & Greed Index: ${value} (${status})`);
     }
+    // } else {
+    //   await sendTelegram(`ℹ️ Fear & Greed Index: ${value} (${status})`);
+    // }
   } catch (e) {
     console.error("Error:", e.message);
   }
