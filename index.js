@@ -1,10 +1,10 @@
 import cron from "node-cron";
 import { runAlert } from "./alert.js";
 
-// Chạy mỗi 5 phút
-cron.schedule("*/5 * * * *", () => {
-  console.log("⏰ Running crypto alert job...");
+cron.schedule("0 8 * * *", () => {
+  console.log("⏰ Running crypto alert job at 8:00 AM Hanoi time...");
   runAlert();
+}, {
+  scheduled: true,
+  timezone: "Asia/Ho_Chi_Minh"   // GMT+7 (Hà Nội, Hồ Chí Minh)
 });
-
-console.log("🚀 Cron job started. Alerts sẽ gửi mỗi 2 phút.");
