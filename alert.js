@@ -30,7 +30,7 @@ export async function runAlert() {
 
     console.log("Fear & Greed:", value);
 
-    if (value < 40) {
+    if (value < 30) {
       await sendTelegram(`⚠️ Cảnh báo: Fear & Greed Index = ${value}`);
     } else if (value > 80) {
       await sendTelegram(`🚀 Thị trường quá tham lam! Index = ${value}`);
